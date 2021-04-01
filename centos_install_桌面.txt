@@ -1,0 +1,2 @@
+#############
+yum -y groups install "GNOME Desktop"  
