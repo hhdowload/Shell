@@ -44,4 +44,41 @@ done
 IFS=$IFS.OLD
 echo "ifc $IFS"
 
-#############循环控制###################
+#############循环控制break\continue##################
+###break:跳出当前循环
+for var in 1 22 3 4 5
+do
+	if [ $var -eq 4 ];then
+		echo "4 is erro,quit"
+		break
+	else
+		echo $var
+	fi
+done
+###continue: 提前终止某次循环命令##################
+for (( i=1; i<=15; i++))
+do
+	if [ $i -gt 5 ] && [ $i -lt 10 ];then
+		continue
+	fi
+	echo $i
+done
+
+i=1
+while	[ $i -lt 15 ]
+do
+	if [ $i -eq 10 ];then
+		i=$[$i + 1]
+		continue
+	fi
+	echo $i
+	i=`expr  $i + 1 `
+done |sort -r
+echo error
+exit
+
+
+
+
+
+
