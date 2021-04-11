@@ -1,0 +1,6 @@
+########
+##centos7安装过程，系统找不到引导盘
+###进入启动界面后，按TAB键，修改  vmlinuz initrd=initrd.img inist.stage2=hd:LABEL=centos\X207\x20x86_64 rd.live.check quiet   为  vmlinuz initrd=initrd.img \
+linux dd quiet
+##返回设备列表将参数修改为响应设备名称  vmlinuz initrd=initrd.img inist.stage2=hd:/dev/sda4 quiet
+CTL +  X 启动即可

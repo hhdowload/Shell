@@ -1,0 +1,3 @@
+#############
+###yum -y groups install "GNOME Desktop"  
+##startx   启动桌面环境
