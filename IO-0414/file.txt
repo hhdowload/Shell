@@ -1,0 +1,3 @@
+ps 
+ bash 
+ echo true 
