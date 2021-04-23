@@ -1,0 +1,6 @@
+INSERT INFO members (lname,fname,address,city,state,zip ) VALUES ('ps ','','','','','','')
+INSERT INFO members (lname,fname,address,city,state,zip ) VALUES (' bash ','','','','','','')
+INSERT INFO members (lname,fname,address,city,state,zip ) VALUES (' echo true ','','','','','','')
+INSERT INFO members (lname,fname,address,city,state,zip ) VALUES ('ps ','','','','','','')
+INSERT INFO members (lname,fname,address,city,state,zip ) VALUES (' bash ','','','','','','')
+INSERT INFO members (lname,fname,address,city,state,zip ) VALUES (' echo true ','','','','','','')
