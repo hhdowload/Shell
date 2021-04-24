@@ -34,4 +34,4 @@ function menu {
 	esac
 }
  menu
- echo byby
+ clear
