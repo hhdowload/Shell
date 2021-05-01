@@ -9,7 +9,7 @@
 #替换命令  s/pattern/replacement/flags   替换标记：数字、g、p、w file 
 #可以用其他符号！！！代替分隔符///
 
-
+##使用文本模式匹配时必须用/patten/  双斜线
 ##行寻址 数字形式、文本模式 address {command1;command2}
 ###1,$指定地址区间为1行到最后一行
 ##删除行 d
