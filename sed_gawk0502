@@ -1,0 +1,64 @@
+#sed进阶##############
+#多行命令 N：将数据流中的下一行加进来创建一个多行组来处理  D：删除多行组中的一行   P：打印多行组中的一行
+#单行命令：n  sed ‘/^$/{n ; d}’file删掉空行后的下一行
+#合并文本行：N sed '/first/{N ; s/\n/ / }' file 将匹配到的行和下一行合并为一行    可以用点.匹配换行符\n或者空格“ ”
+#多行删除命令：D删除多行命令的一行
+#多行打印命令：P打印多行命令中的第一行
+########################
+#模式空间 保持空间
+#h	模式空间复制到保持空间	
+#H	模式空间附加到保持空间
+#g	保持空间复制到模式空间
+#G	保持空间附加到模式空间
+#x	交换模式空间和保持空间内容
+#排除命令 !
+sed  -n '{1!G ; h ; $p }' file  #反转输出文件中的原来的行  相当于tac命令
+
+
+#########################
+#改变流 [address]b [lable] 如果没有加lable，跳转命令会跳转到脚本的结尾
+sed '{/first/b jump1 ; s/this is the/no jump on/; :jump1 s/this is the/jump here on/}' file
+sed '{:start ; s/,//1p ;/,/b start }' file
+
+#测试 [adderss]t [lable] 相当于if-then语句
+echo "this,is ,a, test "  |sed -n '{:start; s/,//1p ;t start}' 
+
+
+###################
+#&符号 代替命令替换中匹配的模式 
+#\1 \2表示第一个和第二个子模式匹配
+
+##################
+#在脚本中使用sed
+sed -n  '{1!G ; h ; $p }' $1
+#重定向sed输出
+#!/bin/bash
+factorial=1
+counter=1
+number=$1
+#
+while [ $counter -le $number ]
+do
+	factorial=$[ $factorial * $counter ]
+	counter=$[ $counter + 1 ]
+done
+#
+result=$(echo $factorial |sed '{
+:start
+s/\(.*[0-9]\)\([0-9]\{3\}\)/\1, \2/
+t start
+}')
+
+echo "the result is $result"
+
+
+####加倍行间距 sed '$!G' file
+####文件中的行编号 sed '=' file |sed 'N; S/\n/ /'
+####打印末尾行 sed ‘{
+:start
+$q ;N ;11,$D
+b start
+ }’ file
+
+###删除html标签  sed 's/<[^>]*>//g ; /^$/d' file 
+ 
